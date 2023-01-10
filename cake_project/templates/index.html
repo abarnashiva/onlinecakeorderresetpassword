@@ -1,0 +1,531 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Cake Loves Cream</title>
+    {% load static %}
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+	
+	<!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+	
+	<!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"> 
+	
+	<!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	
+	<!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+	
+	<!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	
+	<!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="{% url 'index' %}" class="navbar-brand ms-4 ms-lg-0">
+            <h1 class="text-primary m-0">Cake Loves Cream</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto p-4 p-lg-0">
+                <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                <a href="{% url 'product' %}" class="nav-item nav-link">Products</a>
+				<a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
+                <a href="{% url 'testimonial' %}" class="nav-item nav-link">Testimonial</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout_user' %}" class="nav-item nav-link">Logout</a>
+                {% else %}
+				    <a href="{% url 'signin' %}" class="nav-item nav-link">Login</a>
+					<a href="{% url 'details' %}" class="nav-item nav-link">Register</a>
+                {% endif %}
+            </div>
+            <div class=" d-none d-lg-flex">
+                <div class="flex-shrink-0 btn-lg-square border border-light rounded-circle">
+                    <i class="fa fa-phone text-primary"></i>
+                </div>
+                <div class="ps-3">
+                    <small class="text-primary mb-0">Call Us</small>
+                    <p class="text-light fs-5 mb-0">+91 9597772593</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!-- Navbar End -->	
+
+
+<!-- Carousel Start -->
+    <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="owl-carousel header-carousel position-relative">
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="{% static 'img/carousel1.jpg' %}" alt="">
+                <div class="owl-carousel-inner">
+                    <div class="container">
+                        {% if messages %}
+                             {% for message in messages %}
+                                <div class="alert alert-primary text-dark text-center alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="row justify-content-start">
+                            <div class="col-lg-8">
+                                <h2 class="text-primary font-secondary fw-bold mb-2"> The Best Cake Shop</h2>
+                                <h1 class="display-1 text-light mb-4 animated slideInDown wow fadeIn" data-wow-delay="0.5s">We Bake With Passion</h1>
+                                <p class="text-light fs-5 mb-4 pb-3">We are home bakers, So we bake without harmful Chemicals.</p>
+                                <a href="" class="btn btn-primary rounded-pill py-3 px-5">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Carousel End -->
+
+<!-- About Start -->
+
+	<div class="container">
+		<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h2 class="text-primary font-secondary text-center">About Us</h2><br>
+			<h1 class="display-6 mb-4">We Bake Every Item From The Core Of Our Hearts</h1>
+        </div>
+		<div class="row gx-5">
+            <div class="col-lg-5 mb-5 mb-lg-0 wow fadeInUp" data-wow-delay="0.3s" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded" src="{% static 'img/about.jpg' %}" style="object-fit: cover;">
+                </div>
+            </div>
+			<div class="col-lg-6 pb-5 wow fadeInUp" data-wow-delay="0.5s">
+				<h2 class="text-primary mb-4">We are Home Bakers and We Provide 100% Healthy Cakes</h2>
+                <p>We are home bakers, our cakes always represents the pure love of Families.</p>
+				<p>We started a small business in Home. Then our customers are happy with our cakes and that was made us Achieve Big.</p>
+				<a href="" class="btn btn-primary rounded-pill py-3 px-5">Read More</a>
+  			</div>
+		</div>
+	</div>
+	
+<!-- About End -->
+
+<!-- Product Start -->
+    <div class="container-xxl bg-light my-6 py-6 pt-0">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h2 class="text-primary font-secondary text-center">Our Products</h2><br>
+                <h1 class="display-6 mb-4">Explore The Categories Of Our Cake Shop Products</h1>
+            </div>
+			<div class="col-lg-12 col-md-6 text-center font-secondary wow fadeInUp" data-wow-delay="0.7s">
+                <h1 class="text-primary mb-4 font-secondary">30% Discount For The First 10 Orders!</h1>
+            </div><br>
+            <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+                <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase border-inner p-4 mb-5">
+                    <li class="nav-item">
+                        <a class="nav-link text-white active" data-bs-toggle="pill" href="#tab-1">Birthday</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-2">Wedding</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-3">Custom</a>
+                    </li>
+                </ul>
+                <div class="tab-content wow fadeInUp" data-wow-delay="0.5s">
+                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order' %}"><img class="img-fluid" src="{% static 'img/birthday.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.700</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Birthday Cake</h5>
+                                        <span>The Best Birthday Cakes with Unique Decorations</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order' %}"><img class="img-fluid" src="{% static 'img/birthday.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.700</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Birthday Cake</h5>
+                                        <span>The Best Birthday Cakes with Unique Decorations</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order' %}"><img class="img-fluid" src="{% static 'img/birthday.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.700</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Birthday Cake</h5>
+                                        <span>The Best Birthday Cakes with Unique Decorations</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order' %}"><img class="img-fluid" src="{% static 'img/birthday.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.700</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Birthday Cake</h5>
+                                        <span>The Best Birthday Cakes with Unique Decorations</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order' %}"><img class="img-fluid" src="{% static 'img/birthday.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.700</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Birthday Cake</h5>
+                                        <span>The Best Birthday Cakes with Unique Decorations</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order' %}"><img class="img-fluid" src="{% static 'img/birthday.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.700</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Birthday Cake</h5>
+                                        <span>The Best Birthday Cakes with Unique Decorations</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-pane fade show p-0">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order1' %}"><img class="img-fluid" src="{% static 'img/wedding.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1000</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Wedding Cake</h5>
+                                        <span>The Best Wedding Cakes with Super Delisious</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order1' %}"><img class="img-fluid" src="{% static 'img/wedding.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1000</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Wedding Cake</h5>
+                                        <span>The Best Wedding Cakes with Super Delisious</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order1' %}"><img class="img-fluid" src="{% static 'img/wedding.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1000</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Wedding Cake</h5>
+                                        <span>The Best Wedding Cakes with Super Delisious</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order1' %}"><img class="img-fluid" src="{% static 'img/wedding.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1000</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Wedding Cake</h5>
+                                        <span>The Best Wedding Cakes with Super Delisious</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order1' %}"><img class="img-fluid" src="{% static 'img/wedding.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1000</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Wedding Cake</h5>
+                                        <span>The Best Wedding Cakes with Super Delisious</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order1' %}"><img class="img-fluid" src="{% static 'img/wedding.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1000</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Wedding Cake</h5>
+                                        <span>The Best Wedding Cakes with Super Delisious</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-3" class="tab-pane fade show p-0">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order2' %}"><img class="img-fluid" src="{% static 'img/custom.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1500</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Custom Cake</h5>
+                                        <span>The Best Custom Cakes with Super Styles</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order2' %}"><img class="img-fluid" src="{% static 'img/custom.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1500</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Custom Cake</h5>
+                                        <span>The Best Custom Cakes with Super Styles</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order2' %}"><img class="img-fluid" src="{% static 'img/custom.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1500</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Custom Cake</h5>
+                                        <span>The Best Custom Cakes with Super Styles</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order2' %}"><img class="img-fluid" src="{% static 'img/custom.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1500</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Custom Cake</h5>
+                                        <span>The Best Custom Cakes with Super Styles</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order2' %}"><img class="img-fluid" src="{% static 'img/custom.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1500</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Custom Cake</h5>
+                                        <span>The Best Custom Cakes with Super Styles</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <a href="{% url 'order2' %}"><img class="img-fluid" src="{% static 'img/custom.jpg' %}" alt="" style="width: 150px; height: 85px;"></a>
+                                        <h4 class="bg-dark text-primary p-2 m-0">Rs.1500</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-primary border-inner px-4">
+                                        <h5 class="text-uppercase fw-bold">Custom Cake</h5>
+                                        <span>The Best Custom Cakes with Super Styles</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+        </div>
+    </div>
+<!-- Product End -->
+
+<!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Testimonial</h2><br>
+                <h1 class="display-6 mb-4">Our Clients Say!!!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.5s">
+                <div class="testimonial-item bg-dark text-white border-inner p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-1.jpg' %}" style="width: 60px; height: 60px;">
+                        <div class="ps-3">
+                            <h4 class="text-primary text-uppercase mb-1">Priya</h4>
+                            <span>IT Worker</span>
+                        </div>
+                    </div>
+                    <p class="mb-0">I have ordered a Birthday Cake for My mother and She loves it. It was so delisious.</p>
+                </div>
+                <div class="testimonial-item bg-dark text-white border-inner p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-2.jpg' %}" style="width: 60px; height: 60px;">
+                        <div class="ps-3">
+                            <h4 class="text-primary text-uppercase mb-1">Sri Nivash</h4>
+                            <span>IPS Officer</span>
+                        </div>
+                    </div>
+                    <p class="mb-0">My order was an Custom Cake and I'm Satisfied with a Great Cake. It was so Delisious.</p>
+                </div>
+                <div class="testimonial-item bg-dark text-white border-inner p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-3.jpg' %}" style="width: 60px; height: 60px;">
+                        <div class="ps-3">
+                            <h4 class="text-primary text-uppercase mb-1">Shiva Das</h4>
+                            <span>Process Monitor Officer</span>
+                        </div>
+                    </div>
+                    <p class="mb-0">I have ordered a Wedding Cake for My sisters Wedding. It was super decorated and delisious.</p>
+                </div>
+                <div class="testimonial-item bg-dark text-white border-inner p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-4.jpg' %}" style="width: 60px; height: 60px;">
+                        <div class="ps-3">
+                            <h4 class="text-primary text-uppercase mb-1">Nithya</h4>
+                            <span>Graphic Designer</span>
+                        </div>
+                    </div>
+                    <p class="mb-0">I have ordered a Customized Doll cake for My daughter. She was so Happy with that Cake.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Testimonial End -->
+
+<!-- Service Start -->
+    <div class="container-fluid service position-relative px-5 mt-5 bg-img wow fadeInUp" data-wow-delay="0.1s" style="margin-bottom: 135px;">
+		<h2 class="text-primary font-secondary text-center">Our Services</h2><br>
+		<h1 class="display-6 mb-4 text-center">What Do We Offer For You?</h1><br>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <h4 class="text-uppercase mb-3 fw-bold">Quality Products</h4>
+                        <p>Our all Products are full Qualified and One hundred percent Healthy. We Don't Use Harmful Chemicals.</p>
+                        <a class="text-uppercase text-dark fw-bold" href="">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <h4 class="text-uppercase mb-3 fw-bold">Online Order</h4>
+                        <p>Online orders are available in our Shop. You can order in an easy way. Click Order Now option to place your orders.</p>
+                        <a class="text-uppercase text-dark fw-bold" href="">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <h4 class="text-uppercase mb-3 fw-bold">Home Delivery</h4>
+                        <p>We deliver all our orders to the Customers Place on time. Our Delivery partners are so talented.</p>
+                        <a class="text-uppercase text-dark fw-bold" href="">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Service Start -->
+
+
+
+<!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Address</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>37, West, Coimbatore.</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 9597772593</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>cakelovecream@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+				<div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="">About Us</a><br>
+                    <a class="btn btn-link" href="">Contact Us</a><br>
+                    <a class="btn btn-link" href="">Our Services</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a><br>
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+				<div class="col-lg-3 col-md-6">
+					<a href="{% url 'index' %}" class="navbar-brand ms-4 ms-lg-0">
+                    <img class="rounded" src="{% static 'img\footer.jpg' %}" alt="" width="304" height="236">
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<a href="{% url 'index' %}" class="navbar-brand ms-4 ms-lg-0">
+					<h1 class="text-primary m-0 text-center" style="float: right">Cake Loves Cream</h1>
+                    <h3 class="display-7 text-light mb-4 animated slideInDown font-secondary" style="float: right">We Bake With Passion</h3>
+					</a>
+				</div>
+				
+            </div>
+        </div>
+    </div>
+<!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
